@@ -52,7 +52,7 @@ namespace RestAPI.Controllers
 
         // GET: api/Elevators/id/Status
         [HttpGet("{id}/Status")]
-        public async Task<ActionResult<Elevator>> GetColumnStatus([FromRoute] long id)
+        public async Task<ActionResult<string>> GetColumnStatus([FromRoute] long id)
         {
             var elevator = await _context.elevators.FindAsync(id);
 
@@ -61,14 +61,14 @@ namespace RestAPI.Controllers
                 return NotFound();
             }
 
-            return Content("The status of elevator " + elevator.id + " is: " + elevator.status);
+            return elevator.status;
         }
 
 //----------------------------------- Changing the status of a specific Elevator -----------------------------------\\
 
         // PUT: api/Elevators/id/Status        
         [HttpPut("{id}/Status")]
-        public async Task<IActionResult> PutElevator([FromRoute] long id, Elevator elevator)
+        public async Task<ActionResult<string>> PutElevator([FromRoute] long id, Elevator elevator)
         {
             if (id != elevator.id)
             {
@@ -83,7 +83,7 @@ namespace RestAPI.Controllers
                 try
                 {
                     await _context.SaveChangesAsync();
-                    return Content("Elevator: " + elevator.id + ", status as been change to: " + elevator.status);
+                    return elevator.status;
                 }
                 catch (DbUpdateConcurrencyException)
                 {

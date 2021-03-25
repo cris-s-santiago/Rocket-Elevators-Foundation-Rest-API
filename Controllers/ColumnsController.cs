@@ -42,7 +42,7 @@ namespace RestAPI.Controllers
         
         // GET: api/Columns/id/Status
         [HttpGet("{id}/Status")]
-        public async Task<ActionResult<Column>> GetColumnStatus([FromRoute] long id)
+        public async Task<ActionResult<string>> GetColumnStatus([FromRoute] long id)
         {
             var column = await _context.columns.FindAsync(id);
 
@@ -51,7 +51,7 @@ namespace RestAPI.Controllers
                 return NotFound();
             }
 
-            return Content("The status of column " + column.id + " is: " + column.status);
+            return column.status;
         }
 
 
@@ -59,7 +59,7 @@ namespace RestAPI.Controllers
         
         // PUT: api/Columns/id/Status        
         [HttpPut("{id}/Status")]
-        public async Task<IActionResult> PutColumn([FromRoute] long id, Column column)
+        public async Task<ActionResult<string>> PutColumn([FromRoute] long id, Column column)
         {
             if (id != column.id)
             {
@@ -74,7 +74,7 @@ namespace RestAPI.Controllers
                 try
                 {
                     await _context.SaveChangesAsync();
-                    return Content("Column: " + column.id + ", status as been change to: " + column.status);
+                    return column.status;
                 }
                 catch (DbUpdateConcurrencyException)
                 {

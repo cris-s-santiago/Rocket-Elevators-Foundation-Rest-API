@@ -50,14 +50,14 @@ namespace RestAPI.Controllers
                 return NotFound();
             }
 
-            return Content("The status of battery " + battery.id + " is: " + battery.status);
+            return battery.status;
         }
 
 //----------------------------------- Changing the status of a specific Battery -----------------------------------\\
          
         // PUT: api/Batteries/id/Status        
         [HttpPut("{id}/Status")]
-        public async Task<IActionResult> PutBattery([FromRoute] long id, Battery battery)
+        public async Task<ActionResult<string>> PutBattery([FromRoute] long id, Battery battery)
         {
             if (id != battery.id)
             {
@@ -72,7 +72,7 @@ namespace RestAPI.Controllers
                 try
                 {
                     await _context.SaveChangesAsync();
-                    return Content("Battery: " + battery.id + ", status as been change to: " + battery.status);
+                    return battery.status;
                 }
                 catch (DbUpdateConcurrencyException)
                 {
