@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/ef7f1761-e5a7-4b78-b5b0-10956127240b/resourceGroups/CodeBoxx-Week-8-KaelenBurroughs/providers/Microsoft.Web/sites/Week-8-RestAPI-ApiBehaviorOptions-KaelenBurroughs",
-    "appService.deploySubpath": "publish"
+    "appService.deploySubpath": "publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/64bba7c8-aecf-4bf0-ac1b-1551e656fa48/resourceGroups/Rocket_Elevators/providers/Microsoft.Web/sites/rocket-Elevators"
 }

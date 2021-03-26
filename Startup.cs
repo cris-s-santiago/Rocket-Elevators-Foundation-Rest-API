@@ -52,11 +52,11 @@ namespace RestAPI
                     // Everything from this point on is optional but helps with debugging.
                     // .EnableSensitiveDataLogging()
                     // .EnableDetailedErrors();
-                    );
+            );
 
             services.AddMvc();
 
-            // "server=localhost;database=myapp_development;uid=root;password=Pa$$w0rd!",
+                // "server=localhost;database=myapp_development;uid=root;password=Pa$$w0rd!",
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
